@@ -1,0 +1,40 @@
+{
+  "name": "hello-world-app",
+  "version": "0.0.1",
+  "description": "Simple Hello World App",
+  "main": "server.js",
+  "repository": "https://github.com/polarsquad/hello-world-app",
+  "author": "erno@polarsquad.com",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-promise-router": "^3.0.3"
+  },
+  "scripts": {
+    "start": "babel-watch src/server.js",
+    "test": "NODE_ENV=test jest",
+    "lint": "eslint src test migrations"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-watch": "^2.0.7",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "supertest": "^3.3.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ]
+  }
+}
