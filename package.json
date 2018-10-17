@@ -9,7 +9,8 @@
   "private": false,
   "dependencies": {
     "express": "^4.16.4",
-    "express-promise-router": "^3.0.3"
+    "express-promise-router": "^3.0.3",
+    "lodash": "^4.17.11"
   },
   "scripts": {
     "start": "babel-watch src/server.js",
