@@ -469,6 +469,11 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-git-version@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-git-version/-/babel-plugin-git-version-0.2.0.tgz#613afd28ae1da8e5ef98249be1b5aca74a13f8f5"
+  integrity sha1-YTr9KK4dqOXvmCSb4bWsp0oT+PU=
+
 babel-plugin-istanbul@^4.1.6:
   version "4.1.6"
   resolved "http://registry.npmjs.org/babel-plugin-istanbul/-/babel-plugin-istanbul-4.1.6.tgz#36c59b2192efce81c5b378321b74175add1c9a45"

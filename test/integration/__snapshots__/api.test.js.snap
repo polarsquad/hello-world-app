@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/api/healthy GET should return ok 1`] = `
+Object {
+  "status": "ok",
+}
+`;
+
+exports[`/api/version GET should return version 1`] = `
+Object {
+  "commit": Any<String>,
+  "tag": Any<String>,
+}
+`;

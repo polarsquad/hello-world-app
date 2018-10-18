@@ -7,10 +7,13 @@
         "jest/globals": true
     },
     "rules": {
-        // Jest
         "jest/no-disabled-tests": "warn",
         "jest/no-focused-tests": "error",
         "jest/no-identical-title": "error",
         "jest/valid-expect": "error"
+    },
+    "globals": {
+        "GIT_COMMIT": false,
+        "GIT_TAG": false,
     }
 }
