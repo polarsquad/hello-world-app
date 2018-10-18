@@ -1,6 +1,8 @@
 # Hello World App
 This is simple web application for testing in Docker, Kubernetes, etc.
 
+![screenshot](docs/screenshot.png)
+
 ## Development
 
 ### Run in Docker
