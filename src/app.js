@@ -12,6 +12,6 @@ app.use('/', views);
 
 app.use('/assets', express.static(resolve(__dirname, 'assets')));
 
-app.close = () => { }
+app.close = () => { };
 
 export default app;

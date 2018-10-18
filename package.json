@@ -10,12 +10,13 @@
   "scripts": {
     "start": "babel-watch src/server.js",
     "test": "NODE_ENV=test jest",
-    "lint": "eslint src test migrations",
+    "lint": "eslint src test",
     "build": "yarn build:server && yarn build:assets",
     "build:server": "babel -d dist ./src -s",
     "build:assets": "cp -r src/assets dist && cp -r src/views dist"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-promise-router": "^3.0.3",
     "lodash": "^4.17.11"
@@ -29,6 +30,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-watch": "^2.0.7",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.25.1",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
     "supertest": "^3.3.0"

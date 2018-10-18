@@ -9,7 +9,7 @@ afterAll(() => app.close());
 describe('/', () => {
   describe('GET', () => {
     it('should return page', async () => {
-      const { body } = await request.get('/').expect(200)
+      const { body } = await request.get('/').expect(200);
 
       expect(body).toMatchSnapshot();
     });

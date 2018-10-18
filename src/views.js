@@ -14,12 +14,12 @@ const IMAGES = [
   { img: '/assets/ps_sexpistols.png' },
   { img: '/assets/ps_suicidesquad.png' },
   { img: '/assets/ps_trasher.png' },
-]
+];
+
+const render = (view, ctx = {}) => template(readFileSync(resolve(__dirname, `views/${view}.html`)))(ctx);
 
 router.get('/', (_, res) => {
-  res.send(render('index', sample(IMAGES)))
+  res.send(render('index', sample(IMAGES)));
 });
-
-const render = (view, ctx = {}) => template(readFileSync(resolve(__dirname, `views/${view}.html`)))(ctx)
 
 export default router;

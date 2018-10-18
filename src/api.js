@@ -4,16 +4,16 @@ export default (commit, tag) => {
   const router = Router({ mergeParams: true });
   router.get('/version', (_, res) => {
     res.status(200).json({
-      commit: commit,
-      tag: tag
+      commit,
+      tag,
     });
   });
 
   router.get('/healthy', (_, res) => {
     res.status(200).json({
-      status: 'ok'
+      status: 'ok',
     });
   });
 
   return router;
-}
+};
