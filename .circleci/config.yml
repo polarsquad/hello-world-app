@@ -1,0 +1,52 @@
+defaults: &defaults
+  docker:
+    - image: docker
+
+version: 2
+jobs:
+  test:
+    docker:
+      - image: node:8.12.0
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: npm install -g yarn
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Login Docker hub
+          command: echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
+
+      - run: docker build -t polarsquad:hello-world-app .
+
+      - run:
+          name: Publish image
+          command: docker push polarsquad:hello-world-app
+
+workflows:
+  version: 2
+  web:
+    jobs:
+      - test
+
+      - build:
+          requires:
+            - test
