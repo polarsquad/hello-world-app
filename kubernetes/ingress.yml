@@ -1,0 +1,20 @@
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-app
+  annotations:
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - hello.polarsquad.com
+    secretName: hello-world-app-tls
+  rules:
+  - host: hello.polarsquad.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-world-app
+          servicePort: 3000

@@ -1,0 +1,40 @@
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-app
+  labels:
+    app: hello-world-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world-app
+    spec:
+      containers:
+        - name: hello-world-app
+          image: polarsquad/hello-world-app:master
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /api/version
+              port: 3000
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /api/healthy
+              port: 3000
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: 200m
+              memory: 300Mi
+            requests:
+              cpu: 200m
+              memory: 300Mi
