@@ -7,17 +7,21 @@
   "author": "erno@polarsquad.com",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "babel-watch src/server.js",
+    "test": "NODE_ENV=test jest",
+    "lint": "eslint src test migrations",
+    "build": "yarn build:server && yarn build:assets",
+    "build:server": "babel -d dist ./src -s",
+    "build:assets": "cp -r src/assets dist && cp -r src/views dist"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "express-promise-router": "^3.0.3",
     "lodash": "^4.17.11"
   },
-  "scripts": {
-    "start": "babel-watch src/server.js",
-    "test": "NODE_ENV=test jest",
-    "lint": "eslint src test migrations"
-  },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-runtime": "^6.23.0",

@@ -1,5 +1,6 @@
 
-import fs from 'fs';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import { template, sample } from 'lodash';
 import Router from 'express-promise-router';
 
@@ -19,6 +20,6 @@ router.get('/', (_, res) => {
   res.send(render('index', sample(IMAGES)))
 });
 
-const render = (view, ctx = {}) => template(fs.readFileSync(`./src/views/${view}.html`))(ctx)
+const render = (view, ctx = {}) => template(readFileSync(resolve(__dirname, `views/${view}.html`)))(ctx)
 
 export default router;
