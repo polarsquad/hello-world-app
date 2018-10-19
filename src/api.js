@@ -15,5 +15,10 @@ export default (commit, tag) => {
     });
   });
 
+  router.get('/suicide', (_, res) => {
+    console.log('Good bye, cruel world :\'(');
+    process.exit(666);
+  });
+
   return router;
 };
