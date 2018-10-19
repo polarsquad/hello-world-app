@@ -23,18 +23,14 @@ spec:
             httpGet:
               path: /api/version
               port: 3000
-            initialDelaySeconds: 30
-            timeoutSeconds: 30
           livenessProbe:
             httpGet:
               path: /api/healthy
               port: 3000
-            initialDelaySeconds: 30
-            timeoutSeconds: 30
           resources:
-            limits:
+            requests:
               cpu: 200m
               memory: 300Mi
-            requests:
+            limits:
               cpu: 200m
               memory: 300Mi
