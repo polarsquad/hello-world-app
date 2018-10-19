@@ -19,7 +19,15 @@ const IMAGES = [
 const render = (view, ctx = {}) => template(readFileSync(resolve(__dirname, `views/${view}.html`)))(ctx);
 
 router.get('/', (_, res) => {
-  res.send(render('index', sample(IMAGES)));
+  const data = sample(IMAGES);
+  data.details = [
+    { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
+    { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },
+    { key: 'Pod name', value: process.env.POD_NAME || 'unknown' },
+    { key: 'Pod IP', value: process.env.POD_IP || 'unknown' },
+    { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
+  ];
+  res.send(render('index', data));
 });
 
 export default router;

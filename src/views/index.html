@@ -3,6 +3,7 @@
 <head>
   <title>Polar Squad</title>
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
@@ -12,11 +13,11 @@
   <style>
     body,
     body>div:first-child {
-      height: 100%;
+      height: 95%;
     }
 
     img {
-      height: 100%;
+      height: 95%;
     }
   </style>
 </head>
@@ -27,6 +28,26 @@
       <div class="box">
         <img src="${img}">
       </div>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-3">
+      <h3>Information</h3>
+      <table class="u-full-width">
+        <tbody>
+          <% _.each(details, function(post){ %>
+          <tr>
+            <td>${post.key}</td>
+            <td>${post.value}</td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-3">
+      <h3>Actions</h3>
     </div>
   </div>
   <div class="row center-xs">
