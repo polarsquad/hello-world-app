@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - hello.polarsquad.com
+    - hello.k8s-demo.polarsquad.com
     secretName: hello-world-app-tls
   rules:
-  - host: hello.polarsquad.com
+  - host: hello.k8s-demo.polarsquad.com
     http:
       paths:
       - backend:
