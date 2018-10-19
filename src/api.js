@@ -32,8 +32,9 @@ export default (commit, tag) => {
     });
   });
 
-  router.get('/suicide', () => {
+  router.get('/suicide', (_, res) => {
     console.log('Good bye, cruel world :\'(');
+    res.redirect('/');
     process.exit(666);
   });
 
