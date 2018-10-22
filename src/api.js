@@ -1,5 +1,7 @@
 import Router from 'express-promise-router';
 
+const startedAt = new Date();
+
 const muscle = [];
 const fillMuscle = () => {
   for (let i = 0; i < 1000; i += 1) muscle.push(1);
@@ -23,6 +25,12 @@ export default (commit, tag) => {
     res.status(200).json({
       commit,
       tag,
+      startedAt,
+      namespace: process.env.NAMESPACE || 'unknown',
+      podUid: process.env.POD_UID || 'unknown',
+      podName: process.env.POD_NAME || 'unknown',
+      podIp: process.env.POD_IP || 'unknown',
+      hostIp: process.env.HOST_IP || 'unknown',
     });
   });
 
