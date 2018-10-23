@@ -9,6 +9,12 @@ Object {
 exports[`/api/version GET should return version 1`] = `
 Object {
   "commit": Any<String>,
+  "hostIp": Any<String>,
+  "namespace": Any<String>,
+  "podIp": "unknown",
+  "podName": Any<String>,
+  "podUid": Any<String>,
+  "startedAt": Any<String>,
   "tag": Any<String>,
 }
 `;

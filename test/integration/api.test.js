@@ -14,6 +14,11 @@ describe('/api/version', () => {
       expect(body).toMatchSnapshot({
         commit: expect.any(String),
         tag: expect.any(String),
+        hostIp: expect.any(String),
+        namespace: expect.any(String),
+        podName: expect.any(String),
+        podUid: expect.any(String),
+        startedAt: expect.any(String),
       });
     });
   });
