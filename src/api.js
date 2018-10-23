@@ -1,4 +1,6 @@
 import Router from 'express-promise-router';
+import bodyParser from 'body-parser';
+import { truncate } from 'lodash';
 
 const startedAt = new Date();
 
@@ -19,7 +21,7 @@ const brainsThink = () => {
   }, 10000);
 };
 
-export default (commit, tag) => {
+export default (memory, commit, tag) => {
   const router = Router({ mergeParams: true });
   router.get('/version', (_, res) => {
     res.status(200).json({
@@ -54,6 +56,16 @@ export default (commit, tag) => {
   router.get('/think', (_, res) => {
     res.redirect('/');
     setTimeout(brainsThink, 100);
+  });
+
+  router.post('/thing', bodyParser.text({ type: '*/*' }), (req, res) => {
+    memory.set('thing', truncate(req.body));
+    res.send(req.body);
+  });
+
+
+  router.get('/thing', (_, res) => {
+    res.send(memory.get('thing'));
   });
 
   return router;

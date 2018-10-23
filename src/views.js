@@ -4,8 +4,6 @@ import { resolve } from 'path';
 import { template, sample } from 'lodash';
 import Router from 'express-promise-router';
 
-const router = Router({ mergeParams: true });
-
 const IMAGES = [
   { img: '/assets/ps_blackmetal.png' },
   { img: '/assets/ps_lelukauppa.png' },
@@ -18,16 +16,21 @@ const IMAGES = [
 
 const render = (view, ctx = {}) => template(readFileSync(resolve(__dirname, `views/${view}.html`)))(ctx);
 
-router.get('/', (_, res) => {
-  const data = sample(IMAGES);
-  data.details = [
-    { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
-    { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },
-    { key: 'Pod name', value: process.env.POD_NAME || 'unknown' },
-    { key: 'Pod IP', value: process.env.POD_IP || 'unknown' },
-    { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
-  ];
-  res.send(render('index', data));
-});
+export default (storage) => {
+  const router = Router({ mergeParams: true });
 
-export default router;
+  router.get('/', (_, res) => {
+    const data = sample(IMAGES);
+    data.details = [
+      { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
+      { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },
+      { key: 'Pod name', value: process.env.POD_NAME || 'unknown' },
+      { key: 'Pod IP', value: process.env.POD_IP || 'unknown' },
+      { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
+      { key: 'Thing', value: storage.get('thing') || 'not set' },
+    ];
+    res.send(render('index', data));
+  });
+
+  return router;
+};

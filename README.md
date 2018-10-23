@@ -3,6 +3,11 @@ This is simple web application for testing in Docker, Kubernetes, etc.
 
 ![screenshot](docs/screenshot.png)
 
+### Features
+- "Think" - Causes the application to use 100% of CPU for a moment to simulate computation
+- "Pump up" - Causes the application to slowly eat a lot of memory to simulate memory leak
+- "Suicide" - Causes the application to crash to test recovery
+
 ## Development
 
 ### Run in Docker

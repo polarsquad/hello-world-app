@@ -1,0 +1,19 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "@every_second"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: tutum/curl
+            args:
+            - /bin/sh
+            - -c
+            - curl -X POST --data $(date) http://hello-world-app
+          restartPolicy: OnFailure
