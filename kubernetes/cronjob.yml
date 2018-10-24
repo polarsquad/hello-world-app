@@ -4,7 +4,7 @@ kind: CronJob
 metadata:
   name: hello
 spec:
-  schedule: "@every_second"
+  schedule: "0/1 * * * *"
   jobTemplate:
     spec:
       template:
@@ -15,5 +15,5 @@ spec:
             args:
             - /bin/sh
             - -c
-            - curl -X POST --data $(date) http://hello-world-app
+            - 'curl -X POST --data "$(date)" http://hello-world-app/api/thing'
           restartPolicy: OnFailure
