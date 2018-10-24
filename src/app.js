@@ -9,6 +9,10 @@ const storage = new Memory();
 
 const app = express();
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  console.log('Time:', new Date().toISOString(), ', Url: ', req.url);
+  next();
+});
 
 app.use('/api', api(storage, GIT_COMMIT, GIT_TAG));
 app.use('/', views(storage));
