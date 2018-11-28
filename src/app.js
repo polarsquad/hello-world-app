@@ -7,6 +7,7 @@ import storage from './storage';
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   console.log('Time:', new Date().toISOString(), ', Url: ', req.url);
   next();

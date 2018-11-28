@@ -20,8 +20,14 @@ export default (storage) => {
   const router = Router({ mergeParams: true });
 
   router.get('/', (_, res) => {
-    storage.get('thing').then((thing) => {
+    Promise.all([
+      storage.get('thing'),
+      storage.get('heroName'),
+    ]).then(([thing, heroName]) => {
       const data = sample(IMAGES);
+      data.storageName = storage.constructor.name;
+      data.heroName = heroName;
+      data.heroTitle = (heroName ? `Oh, you like ${heroName}, are you sure?` : 'Your favourite super hero?');
       data.details = [
         { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
         { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },

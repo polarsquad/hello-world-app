@@ -69,9 +69,12 @@ export default (storage, commit, tag) => {
     storage.set('thing', truncate(req.body)).then(() => res.send(req.body));
   });
 
-
   router.get('/thing', (_, res) => {
     storage.get('thing').then(thing => res.send(thing));
+  });
+
+  router.post('/hero', (req, res) => {
+    storage.set('heroName', req.body.heroName).then(() => res.redirect('/'));
   });
 
   return router;
