@@ -20,16 +20,18 @@ export default (storage) => {
   const router = Router({ mergeParams: true });
 
   router.get('/', (_, res) => {
-    const data = sample(IMAGES);
-    data.details = [
-      { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
-      { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },
-      { key: 'Pod name', value: process.env.POD_NAME || 'unknown' },
-      { key: 'Pod IP', value: process.env.POD_IP || 'unknown' },
-      { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
-      { key: 'Thing', value: storage.get('thing') || 'not set' },
-    ];
-    res.send(render('index', data));
+    storage.get('thing').then((thing) => {
+      const data = sample(IMAGES);
+      data.details = [
+        { key: 'Namespace', value: process.env.NAMESPACE || 'unknown' },
+        { key: 'Pod UID', value: process.env.POD_UID || 'unknown' },
+        { key: 'Pod name', value: process.env.POD_NAME || 'unknown' },
+        { key: 'Pod IP', value: process.env.POD_IP || 'unknown' },
+        { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
+        { key: 'Thing', value: thing || 'not set' },
+      ];
+      res.send(render('index', data));
+    });
   });
 
   return router;

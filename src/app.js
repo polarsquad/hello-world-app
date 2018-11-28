@@ -3,9 +3,7 @@ import { resolve } from 'path';
 import bodyParser from 'body-parser';
 import views from './views';
 import api from './api';
-import Memory from './storage/memory';
-
-const storage = new Memory();
+import storage from './storage';
 
 const app = express();
 app.use(bodyParser.json());

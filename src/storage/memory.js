@@ -4,10 +4,13 @@ export default class Memory {
   }
 
   set(key, value) {
-    this.memory[key] = value;
+    return new Promise((resolve) => {
+      this.memory[key] = value;
+      return resolve();
+    });
   }
 
   get(key) {
-    return this.memory[key];
+    return new Promise(resolve => resolve(this.memory[key]));
   }
 }

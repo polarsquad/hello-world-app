@@ -21,7 +21,7 @@ const brainsThink = () => {
   }, 10000);
 };
 
-export default (memory, commit, tag) => {
+export default (storage, commit, tag) => {
   const router = Router({ mergeParams: true });
   router.get('/version', (_, res) => {
     res.status(200).json({
@@ -59,13 +59,12 @@ export default (memory, commit, tag) => {
   });
 
   router.post('/thing', bodyParser.text({ type: '*/*' }), (req, res) => {
-    memory.set('thing', truncate(req.body));
-    res.send(req.body);
+    storage.set('thing', truncate(req.body)).then(() => res.send(req.body));
   });
 
 
   router.get('/thing', (_, res) => {
-    res.send(memory.get('thing'));
+    storage.get('thing').then(thing => res.send(thing));
   });
 
   return router;

@@ -32,4 +32,11 @@ docker-compose up
 ```shell
 yarn start
 ```
+
+#### Run with Redis
+```shell
+docker-compose up -d redis
+
+REDIS_URL=redis://localhost yarn start
+```
 > Open [http://localhost:3000]()
