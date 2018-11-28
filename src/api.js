@@ -1,12 +1,19 @@
 import Router from 'express-promise-router';
 import bodyParser from 'body-parser';
 import { truncate } from 'lodash';
+import prettyBytes from 'pretty-bytes';
+import throttle from 'throttle-function';
 
 const startedAt = new Date();
 
 const muscle = [];
+const printArgh = throttle(() => {
+  console.log(`Pumping, araarrgh! (${prettyBytes(muscle.length)})`);
+});
+
 const fillMuscle = () => {
   for (let i = 0; i < 1000; i += 1) muscle.push(1);
+  printArgh();
 };
 
 const brainsThink = () => {
