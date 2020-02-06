@@ -42,6 +42,21 @@
   </div>
   <div class="row center-xs">
     <div class="col-xs-3">
+      <h3>Configmaps</h3>
+      <table class="u-full-width">
+        <tbody>
+          <% _.each(configmaps, function(post){ %>
+          <tr>
+            <td>${post.key}</td>
+            <td>${post.value}</td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-3">
       <h3>Persistence (to ${storageName})</h3>
     </div>
   </div>
