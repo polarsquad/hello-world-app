@@ -36,9 +36,21 @@ export default (storage) => {
         { key: 'Host IP', value: process.env.HOST_IP || 'unknown' },
         { key: 'Thing', value: thing || 'not set' },
       ];
+      data.configmaps = get_configmaps();
       res.send(render('index', data));
     });
   });
 
   return router;
 };
+
+function get_configmaps()
+{
+  const filtered_envs = Object.keys(process.env)
+  .filter(key => key.includes('configmap'))
+  .reduce((obj, key) => {
+    obj[key] = { key: key, value: process.env[key] };
+    return obj;
+  }, {});
+  return filtered_envs
+}
