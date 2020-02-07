@@ -19,7 +19,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-promise-router": "^3.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "pretty-bytes": "^5.1.0",
     "redis": "^2.8.0",
     "throttle-function": "^0.1.0"
