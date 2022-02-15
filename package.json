@@ -39,5 +39,8 @@
     "lint-staged": "12.3.4",
     "nodemon": "2.0.15",
     "prettier": "2.5.1"
+  },
+  "engines": {
+    "node": "^16.14.0"
   }
 }
