@@ -1,10 +1,10 @@
-version: '3'
+version: "3"
 services:
   web:
     image: polarsquad/hello-world-app
     build: .
     ports:
-     - "3000:3000"
+      - "3000:3000"
   redis:
     image: redis
     ports:

@@ -6,24 +6,23 @@ version: 2
 jobs:
   test:
     docker:
-      - image: node:8.12.0
+      - image: node:16.14.0
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
 
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn lint
-      - run: yarn test
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
   build:
     <<: *defaults
     steps:
