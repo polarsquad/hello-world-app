@@ -19,5 +19,5 @@ spec:
                 - /bin/sh
               args:
                 - -c
-                - 'curl -X POST --data "$(date)" http://hello-world-app/api/thing'
+                - 'curl -X POST -H "content-type: text/plain" --data "$(date)" http://hello-world-app/api/thing'
           restartPolicy: OnFailure
