@@ -1,5 +1,5 @@
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: hello
@@ -8,12 +8,16 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: hellocurl
         spec:
           containers:
             - name: hello
-              image: tutum/curl
-              args:
+              image: curlimages/curl
+              command:
                 - /bin/sh
+              args:
                 - -c
                 - 'curl -X POST --data "$(date)" http://hello-world-app/api/thing'
           restartPolicy: OnFailure
