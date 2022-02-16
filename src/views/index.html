@@ -1,83 +1,115 @@
 <html>
+  <head>
+    <title>Polar Squad</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css"
+      integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css"
+      integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I"
+      crossorigin="anonymous"
+    />
+    <style>
+      img {
+        height: 80vh;
+      }
+    </style>
+  </head>
 
-<head>
-  <title>Polar Squad</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I"
-    crossorigin="anonymous">
-  <style>
-    img {
-      height: 80vh;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="row center-xs middle-xs">
-    <div class="col-xs-8">
-      <div class="box">
-        <img src="${img}">
+  <body>
+    <div class="row center-xs middle-xs">
+      <div class="col-xs-8">
+        <div class="box">
+          <img src="${img}" />
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row center-xs">
-    <div class="col-xs-3">
-      <h3>Information</h3>
-      <table class="u-full-width">
-        <tbody>
-          <% _.each(details, function(post){ %>
-          <tr>
-            <td>${post.key}</td>
-            <td>${post.value}</td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
+    <div class="row center-xs">
+      <div class="col-xs-3">
+        <h3>Information</h3>
+        <table class="u-full-width">
+          <tbody>
+            <% _.each(details, function(post){ %>
+            <tr>
+              <td>${post.key}</td>
+              <td>${post.value}</td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="row center-xs">
-    <div class="col-xs-3">
-      <h3>Configmaps</h3>
-      <table class="u-full-width">
-        <tbody>
-          <% _.each(configmaps, function(post){ %>
-          <tr>
-            <td>${post.key}</td>
-            <td>${post.value}</td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
+    <div class="row center-xs">
+      <div class="col-xs-3">
+        <h3>Configmaps</h3>
+        <table class="u-full-width">
+          <tbody>
+            <% _.each(configmaps, function(post){ %>
+            <tr>
+              <td>${post.key}</td>
+              <td>${post.value}</td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="row center-xs">
-    <div class="col-xs-3">
-      <h3>Persistence (to ${storageName})</h3>
+    <div class="row center-xs">
+      <div class="col-xs-3">
+        <h3>Persistence (to ${storageName})</h3>
+      </div>
     </div>
-  </div>
-  <div class="row center-xs">
-    <form method="POST" action="/api/hero">
-      <div class="col-xs-12">
-        <label for="heroName">${heroTitle}</label>
-        <input class="u-full-width" type="text" placeholder="Who is he/she?" id="heroName" name="heroName" value="${heroName}">
-      </div><input class="button-primary" type="submit" value="Save">
-    </form>
-  </div>
-  <div class="row center-xs">
-    <div class="col-xs-3">
-      <h3>Actions</h3>
+    <div class="row center-xs">
+      <form method="POST" action="/api/hero">
+        <div class="col-xs-12">
+          <label for="heroName">${heroTitle}</label>
+          <input
+            class="u-full-width"
+            type="text"
+            placeholder="Who is he/she?"
+            id="heroName"
+            name="heroName"
+            value="${heroName}"
+          />
+        </div>
+        <input class="button-primary" type="submit" value="Save" />
+      </form>
     </div>
-  </div>
-  <div class="row center-xs">
-    <a href="/api/think" class="button box col-xs-1"><i class="fas fa-brain"></i>Think!</a>
-    <a href="/api/pumpup" class="button box col-xs-1"><i class="fas fa-dumbbell"></i>Pump up!</a>
-    <a href="/api/suicide" class="button box col-xs-1"><i class="fas fa-skull"></i>Suicide</a>
-  </div>
-</body>
-
+    <div class="row center-xs">
+      <div class="col-xs-3">
+        <h3>Actions</h3>
+      </div>
+    </div>
+    <div class="row center-xs">
+      <a href="/api/think" class="button box col-xs-1"
+        ><i class="fas fa-brain"></i>Think!</a
+      >
+      <a href="/api/pumpup" class="button box col-xs-1"
+        ><i class="fas fa-dumbbell"></i>Pump up!</a
+      >
+      <a href="/api/suicide" class="button box col-xs-1"
+        ><i class="fas fa-skull"></i>Suicide</a
+      >
+    </div>
+  </body>
 </html>

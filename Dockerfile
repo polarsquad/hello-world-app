@@ -1,17 +1,15 @@
-FROM node:8.12.0 as build
-RUN npm install -g yarn
+FROM node:16.14.0 as build
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN npm ci
+RUN npm run build
 
 ### FINAL IMAGE ###
-FROM node:8.12.0
-RUN npm install -g yarn
+FROM node:16.14.0
 
 COPY package.json .
-COPY yarn.lock .
-RUN yarn install --production
+COPY package-lock.json .
+RUN npm ci --production --ignore-scripts
 
 COPY --from=build dist/ .
 
