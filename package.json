@@ -14,7 +14,7 @@
     "clean": "rm -rf .eslintcache dist",
     "build": "npm run build:assets && npm run build:server",
     "build:server": "esbuild src/server.js --analyze --bundle --define:GIT_COMMIT=\\\"$(git rev-parse HEAD)\\\" --external:./node_modules/* --platform=node --target=node16.14 --outfile=dist/server.js",
-    "build:assets": "cp -r src/assets dist && cp -r src/views dist",
+    "build:assets": "mkdir -p dist && cp -r src/assets dist && cp -r src/views dist",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint --ext .js --cache --fix src/",
