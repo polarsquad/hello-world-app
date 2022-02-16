@@ -11,7 +11,7 @@ const printArgh = throttle(() => {
 }, 1000);
 
 const fillMuscle = () => {
-  for (let i = 0; i < 1000; i += 1) muscle.push(1);
+  for (let i = 0; i < 100000; i += 1) muscle.push(1);
   printArgh();
 };
 
