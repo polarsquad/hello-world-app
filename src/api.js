@@ -17,13 +17,17 @@ const fillMuscle = () => {
 
 const brainsThink = () => {
   const interval = setInterval(() => {
-    let i = 0;
-    while (i < 10000000) i += 1;
+    for (let i = 0; i < 50; i += 1) {
+      let j = 0;
+      while (j < 10000000) {
+        j += 1 + Math.random();
+      }
+    }
   }, 1);
 
   setTimeout(() => {
     clearInterval(interval);
-    console.log("Done thinking!");
+    console.log(`Done thinking at ${new Date()}!`);
   }, 10000);
 };
 
